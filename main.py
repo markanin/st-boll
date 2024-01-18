@@ -9,6 +9,13 @@ st.title('Bollinger Bands')
 
 df = pd.read_csv('copx.csv')
 
+# Calculate the 20-period Standard Deviation (SD)
+df['SD'] = df['Adj Close'].rolling(window=20).std()
+
+# Calculate the Upper Bollinger Band (UB) and Lower Bollinger Band (LB)
+df['UB'] = df['SMA'] + 2 * df['SD']
+df['LB'] = df['SMA'] - 2 * df['SD']
+
 fig = go.Figure()
 
 # Add the price chart
