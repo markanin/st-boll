@@ -9,6 +9,8 @@ st.title('Bollinger Bands')
 
 df = pd.read_csv('copx.csv')
 
+df['SMA'] = df['Adj Close'].rolling(window=20).mean()
+
 # Calculate the 20-period Standard Deviation (SD)
 df['SD'] = df['Adj Close'].rolling(window=20).std()
 
